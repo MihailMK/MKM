@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+{{ content.content_title|safe }}
+{{ content.content_text|safe }}
+
+{% endblock %}

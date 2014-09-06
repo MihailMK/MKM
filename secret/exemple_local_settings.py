@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-from local_settings import *
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -21,8 +20,18 @@ from local_settings import *
 SECRET_KEY = 's#fy30e8a9-_9p-f(42ghlm53a()b!zo)ho4q1b&ankyt4c&20'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
+
+
+# Templates file
+
+TEMPLATE_DIRS = (
+    os.path.join (BASE_DIR, "templates"),
+)
 
 
 # Application definition
@@ -52,6 +61,16 @@ ROOT_URLCONF = 'secret.urls'
 WSGI_APPLICATION = 'secret.wsgi.application'
 
 
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'secret_db.sqlite3'),
+        }
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -64,3 +83,18 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+STATIC_ROOT = os.path.join (BASE_DIR, "static")
+
+STATIC_URL = '/static/'
+
+
+# Media files
+
+MEDIA_ROOT = os.path.join (BASE_DIR, "media")
+
+MEDIA_URL = '/media/'
